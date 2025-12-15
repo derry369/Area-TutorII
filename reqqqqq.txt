@@ -1,0 +1,5 @@
+Represent shapes, formulas, and their relationships (e.g., a trapezium has bases and a height; the area formula is ½ × (a+b) × h).
+
+Drive problem selection based on semantic reasoning (e.g., “student has mastered triangles but not trapeziums → next problem should be trapezium”).
+
+Provide adaptive feedback and hints informed by the ontology (e.g., detecting errors by comparing the student’s input with expected formula relationships).

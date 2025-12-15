@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.example.org/its#"
+     xml:base="http://www.example.org/its"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+    <!-- Ontology -->
+    <owl:Ontology rdf:about="http://www.example.org/its"/>
+
+    <!-- Classes -->
+    <owl:Class rdf:about="#Shape"/>
+    <owl:Class rdf:about="#Problem"/>
+    <owl:Class rdf:about="#Hint"/>
+    <owl:Class rdf:about="#Error"/>
+    <owl:Class rdf:about="#Student"/>
+    <owl:Class rdf:about="#Attempt"/>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="#hasHint">
+        <rdfs:domain rdf:resource="#Problem"/>
+        <rdfs:range rdf:resource="#Hint"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasError">
+        <rdfs:domain rdf:resource="#Problem"/>
+        <rdfs:range rdf:resource="#Error"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasShapeProblem">
+        <rdfs:domain rdf:resource="#Student"/>
+        <rdfs:range rdf:resource="#Problem"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasAttempt">
+        <rdfs:domain rdf:resource="#Student"/>
+        <rdfs:range rdf:resource="#Attempt"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#attemptedProblem">
+        <rdfs:domain rdf:resource="#Attempt"/>
+        <rdfs:range rdf:resource="#Problem"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#causedError">
+        <rdfs:domain rdf:resource="#Attempt"/>
+        <rdfs:range rdf:resource="#Error"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#receivedHint">
+        <rdfs:domain rdf:resource="#Attempt"/>
+        <rdfs:range rdf:resource="#Hint"/>
+    </owl:ObjectProperty>
+
+    <!-- Shape-specific Properties -->
+    <owl:ObjectProperty rdf:about="#hasBase">
+        <rdfs:domain rdf:resource="#Shape"/>
+        <rdfs:range rdf:resource="xsd:float"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasHeight">
+        <rdfs:domain rdf:resource="#Shape"/>
+        <rdfs:range rdf:resource="xsd:float"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasRadius">
+        <rdfs:domain rdf:resource="#Shape"/>
+        <rdfs:range rdf:resource="xsd:float"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#numSides">
+        <rdfs:domain rdf:resource="#Shape"/>
+        <rdfs:range rdf:resource="xsd:integer"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#shapeName">
+        <rdfs:domain rdf:resource="#Shape"/>
+        <rdfs:range rdf:resource="xsd:string"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#expectedArea">
+        <rdfs:domain rdf:resource="#Problem"/>
+        <rdfs:range rdf:resource="xsd:float"/>
+    </owl:ObjectProperty>
+
+    <!-- Student-specific Properties -->
+    <owl:DatatypeProperty rdf:about="#masteryScore">
+        <rdfs:domain rdf:resource="#Student"/>
+        <rdfs:range rdf:resource="xsd:float"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#lastAnswerCorrect">
+        <rdfs:domain rdf:resource="#Attempt"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#attemptTime">
+        <rdfs:domain rdf:resource="#Attempt"/>
+        <rdfs:range rdf:resource="xsd:dateTime"/>
+    </owl:DatatypeProperty>
+
+    <!-- Individuals: Shapes -->
+    <owl:NamedIndividual rdf:about="#Circle">
+        <rdf:type rdf:resource="#Shape"/>
+        <shapeName>Circle</shapeName>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Triangle">
+        <rdf:type rdf:resource="#Shape"/>
+        <numSides rdf:datatype="xsd:integer">3</numSides>
+        <shapeName>Triangle</shapeName>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Square">
+        <rdf:type rdf:resource="#Shape"/>
+        <numSides rdf:datatype="xsd:integer">4</numSides>
+        <shapeName>Square</shapeName>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Rectangle">
+        <rdf:type rdf:resource="#Shape"/>
+        <numSides rdf:datatype="xsd:integer">4</numSides>
+        <shapeName>Rectangle</shapeName>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Parallelogram">
+        <rdf:type rdf:resource="#Shape"/>
+        <numSides rdf:datatype="xsd:integer">4</numSides>
+        <shapeName>Parallelogram</shapeName>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Trapezium">
+        <rdf:type rdf:resource="#Shape"/>
+        <numSides rdf:datatype="xsd:integer">4</numSides>
+        <shapeName>Trapezium</shapeName>
+    </owl:NamedIndividual>
+
+    <!-- Individuals: Example Errors -->
+    <owl:NamedIndividual rdf:about="#CircleErrorUsedDiameter">
+        <rdf:type rdf:resource="#Error"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#TriangleErrorWrongBaseOrHeight">
+        <rdf:type rdf:resource="#Error"/>
+    </owl:NamedIndividual>
+
+    <!-- Individuals: Example Hints -->
+    <owl:NamedIndividual rdf:about="#CircleHint1">
+        <rdf:type rdf:resource="#Hint"/>
+        <hintText>Area = π × r²</hintText>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#TriangleHint1">
+        <rdf:type rdf:resource="#Hint"/>
+        <hintText>Area = ½ × base × height</hintText>
+    </owl:NamedIndividual>
+
+    <!-- Individuals: Example Problems -->
+    <owl:NamedIndividual rdf:about="#CircleProblem1">
+        <rdf:type rdf:resource="#Problem"/>
+        <hasError rdf:resource="#CircleErrorUsedDiameter"/>
+        <hasHint rdf:resource="#CircleHint1"/>
+        <expectedArea rdf:datatype="xsd:float">78.5</expectedArea>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#TriangleProblem1">
+        <rdf:type rdf:resource="#Problem"/>
+        <hasError rdf:resource="#TriangleErrorWrongBaseOrHeight"/>
+        <hasHint rdf:resource="#TriangleHint1"/>
+        <expectedArea rdf:datatype="xsd:float">30</expectedArea>
+    </owl:NamedIndividual>
+
+</rdf:RDF>
